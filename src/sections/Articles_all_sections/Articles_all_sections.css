@@ -1,0 +1,28 @@
+.cards_Articles{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.card_Articles img{
+    display: block;
+}
+.image_articles{
+
+    position: relative;
+}
+.image_articles img{
+    width: 90%;
+}
+
+.card_Articles{
+    padding: 5vh;
+    width: 90%;
+    background-color: rgb(242, 242, 242);
+}
+.card_Articles h3{
+    font-weight: bold;
+}
+.card_Articles p{
+    color: rgb(96, 96, 249);
+}
