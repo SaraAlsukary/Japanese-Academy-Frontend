@@ -7,14 +7,14 @@ import { useEffect, useState } from 'react';
 import { IoChatbubbleEllipsesOutline } from 'react-icons/io5';
 import { MdEmail } from 'react-icons/md';
 import Logo from "../src/assets/Logo/الشعار-2-png.png";
-
+import { Suspense } from "react";
 const queryClient = new QueryClient();
 
 function App() {
-    const [hideSocial, setHideSocial] = useState(false);
-    const [loading, setLoading] = useState(true); // اجعل البداية true
+  const [hideSocial, setHideSocial] = useState(false);
+  const [loading, setLoading] = useState(true); // اجعل البداية true
 
-    const [showIcons, setShowIcons] = useState(false);
+  const [showIcons, setShowIcons] = useState(false);
 
   const toggleIcons = () => {
     setShowIcons(!showIcons);
@@ -93,41 +93,40 @@ function App() {
   }, []);
   return (
     <QueryClientProvider client={queryClient}>
-             <Cookies />
-             <button className="up">
-               <FaArrowAltCircleUp />
-             </button>
-     
-             <div className={`social ${hideSocial ? "noneSocial" : ""}`}>
-               <ul onClick={toggleIcons} style={{ cursor: "pointer" }}>
-                 <li className="click">
-                   <IoChatbubbleEllipsesOutline />
-                 </li>
-                 {showIcons && (
-                   <>
-                     <li className="line top">
-                       <a href="https://line.me/ti/p/IuAqVt59QV">
-                         <FaLine />
-                       </a>
-                     </li>
-                     <li className="email top">
-                       <a href="mailto:contact@sawagroup.jp">
-                         <MdEmail />
-                       </a>
-                     </li>
-                     <li className="whatsapp top">
-                       <a href="https://wa.link/mr0gya">
-                         <FaWhatsapp />
-                       </a>
-                     </li>
-                   </>
-                 )}
-               </ul>
-             </div>
-             {loading ? (
-               <img className="Loading" src={Logo} alt="" />
-             ) :(<AppRouter />)
-             }
+      <Cookies />
+      <button className="up">
+        <FaArrowAltCircleUp />
+      </button>
+
+      <div className={`social ${hideSocial ? "noneSocial" : ""}`}>
+        <ul onClick={toggleIcons} style={{ cursor: "pointer" }}>
+          <li className="click">
+            <IoChatbubbleEllipsesOutline />
+          </li>
+          {showIcons && (
+            <>
+              <li className="line top">
+                <a href="https://line.me/ti/p/IuAqVt59QV">
+                  <FaLine />
+                </a>
+              </li>
+              <li className="email top">
+                <a href="mailto:contact@sawagroup.jp">
+                  <MdEmail />
+                </a>
+              </li>
+              <li className="whatsapp top">
+                <a href="https://wa.link/mr0gya">
+                  <FaWhatsapp />
+                </a>
+              </li>
+            </>
+          )}
+        </ul>
+      </div>
+      <Suspense fallback={<img className="Loading" src={Logo} alt="" />}>
+        <AppRouter />
+      </Suspense>
     </QueryClientProvider>
   );
 }

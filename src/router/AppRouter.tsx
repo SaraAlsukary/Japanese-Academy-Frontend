@@ -1,34 +1,34 @@
 import { RouterProvider, createBrowserRouter, Navigate } from "react-router-dom";
+import { lazy } from "react";
+const About = lazy(() => import("../pages/About/About.tsx"));
+const Dash = lazy(() => import("../pages/Dash/Dash.tsx"));
+const Date_lisson = lazy(() => import("../pages/Date_lisson/Date_lisson.tsx"));
+const Home = lazy(() => import("../pages/Home/Home.tsx"));
+const Login = lazy(() => import("../pages/Login/Login.tsx"));
+const Questions = lazy(() => import("../pages/Questions/Questions.tsx"));
+const Articles = lazy(() => import("../pages/Articles/Articles.tsx"));
+const Level_division = lazy(() => import("../pages/Level_division/Level_division.tsx"));
+const Register = lazy(() => import("../pages/Register/Register.tsx"));
+const Teachers = lazy(() => import("../pages/Teachers/Teachers.tsx"));
+const Study_materials = lazy(() => import("../pages/Study_materials/Study_materials.tsx"));
+const More_services = lazy(() => import("../pages/More_services/More_services.tsx"));
+const Support = lazy(() => import("../pages/Support/Support.tsx"));
+const Fees = lazy(() => import("../pages/Fees/Fees.tsx"));
+const Login_users = lazy(() => import("../pages/Login_users/Login_users.tsx"));
+const Register_accounts = lazy(() => import("../pages/Register_accounts/Register_accounts.tsx"));
+const Dash_users = lazy(() => import("../pages/Dash_users/Dash_users.tsx"));
+const Privacy = lazy(() => import("../pages/Privacy/Privacy.tsx"));
+const CommetS = lazy(() => import("../pages/CommetS/CommetS.tsx"));
+const Term = lazy(() => import("../pages/Term/Term.tsx"));
+const Dash_Teachers = lazy(() => import("../pages/Dash_Teachers/Dash_Teachers.tsx"));
+const Reset_Password = lazy(() => import("../pages/Reset_Password/Reset_Password.tsx"));
 
-/* Pages */
-import {
-    About,
-    Dash,
-    Date_lisson,
-    Home,
-    Login,
-    Questions,
-    Articles,
-    Level_division,
-    Register,
-    Teachers,
-    Study_materials,
-    More_services,
-    Support,
-    Fees,
-    Login_users,
-    Register_accounts,
-    Dash_users,
-    Privacy,
-    CommetS,
-    Term,
-    Dash_Teachers,
-    Reset_Password,
-} from "../pages/index";
+/* Sections */
+const LevelTest = lazy(() => import("../sections/Level_Determination/LevelTest.tsx"));
 
-import { LevelTest } from "../sections";
-import ProtectedRoute from "../components/ProtectedRoute";
-import UserLayout from "../Layout/UserLayout";
+/* Components */
+const ProtectedRoute = lazy(() => import("../components/ProtectedRoute.tsx"));
+const UserLayout = lazy(() => import("../Layout/UserLayout.tsx"));
 
 
 /* =========================
