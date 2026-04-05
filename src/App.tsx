@@ -12,7 +12,7 @@ const queryClient = new QueryClient();
 
 function App() {
   const [hideSocial, setHideSocial] = useState(false);
-  const [loading, setLoading] = useState(true); // اجعل البداية true
+  // const [loading, setLoading] = useState(true); // اجعل البداية true
 
   const [showIcons, setShowIcons] = useState(false);
 
@@ -85,7 +85,7 @@ function App() {
     const loadResources = async () => {
       await document.fonts.ready; // انتظر تحميل الخطوط
       setTimeout(() => {
-        setLoading(false);
+        // setLoading(false);
       }, 500); // تأخير بسيط لإعطاء إحساس بالسلاسة
     };
 
