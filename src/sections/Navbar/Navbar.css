@@ -171,7 +171,7 @@
 }
 
 .buttons_mobile {
-  width: 274px;
+  width: 265px;
 }
 
 @media screen and (min-width: 990px) {
@@ -199,6 +199,10 @@
     display: flex;
     gap: 5px;
     align-items: center;
+  }
+
+  .buttons_mobile {
+    width: 265px;
   }
 
   .buttons_pc {
@@ -583,5 +587,14 @@
 
   .custom-toggler-icon {
     display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .buttons_mobile button.login_nav,
+  .buttons_mobile button.register_nav {
+    margin: 10px;
+    width: 112px;
   }
 }
