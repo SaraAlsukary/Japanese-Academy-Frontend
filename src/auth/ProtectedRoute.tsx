@@ -30,7 +30,7 @@ export default function ProtectedRoute({ children }: Props) {
         return (
             <div style={styles.container}>
                 <div style={styles.box}>
-                    <h2> Restricted Area 🔐</h2>
+                    <h2 style={{ direction: "ltr" }}> Restricted Area 🔐</h2>
 
                     <input
                         style={styles.input}
