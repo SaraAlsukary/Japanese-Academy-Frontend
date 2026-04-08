@@ -83,6 +83,22 @@ const router = createBrowserRouter([
             path: "Register_account",
             element: hasAccess() ? <Navigate to="/" /> : <Register_accounts />,
         },
+        {
+            path: "Dash_Teachers",
+            element: (
+                <ProtectedRoute isAuthenticated={isAuth()}>
+                    <Dash_Teachers />
+                </ProtectedRoute>
+            ),
+        },
+        {
+            path: "Dash_users/:userId",
+            element: (
+                <ProtectedRoute isAuthenticated={isAuth()}>
+                    <Dash_users />
+                </ProtectedRoute>
+            ),
+        },
 
         ]
     },
@@ -93,22 +109,6 @@ const router = createBrowserRouter([
         element: (
             <ProtectedRoute isAuthenticated={isAuth()}>
                 <Dash />
-            </ProtectedRoute>
-        ),
-    },
-    {
-        path: "/Dash_Teachers",
-        element: (
-            <ProtectedRoute isAuthenticated={isAuth()}>
-                <Dash_Teachers />
-            </ProtectedRoute>
-        ),
-    },
-    {
-        path: "/Dash_users/:userId",
-        element: (
-            <ProtectedRoute isAuthenticated={isAuth()}>
-                <Dash_users />
             </ProtectedRoute>
         ),
     },

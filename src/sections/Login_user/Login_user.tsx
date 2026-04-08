@@ -24,7 +24,10 @@ export default function Login_user() {
     e.preventDefault();
     setIsLoading(true);
     setError("");
-
+    if (!email || !password) {
+      setError("يرجى إدخال البريد وكلمة المرور");
+      return;
+    }
     // fetch("https://api.japaneseacademy.jp/login_user", {
     fetch(`${APIURL}/login`, {
       method: "POST",
