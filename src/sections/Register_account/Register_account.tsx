@@ -8,7 +8,6 @@ import { FaEyeSlash } from "react-icons/fa";
 import { IoEyeSharp } from "react-icons/io5";
 import APIURL from "../../api/constants";
 import { toast } from "react-toastify";
-import { useAuth } from "../../hooks/useAuth";
 export default function Register_account() {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -55,7 +54,6 @@ export default function Register_account() {
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
-  const { login } = useAuth();
 
 
   useEffect(() => {

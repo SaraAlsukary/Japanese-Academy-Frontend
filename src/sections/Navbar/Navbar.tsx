@@ -18,9 +18,7 @@ import { useAuth } from "../../hooks/useAuth";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [role, setRole] = useState(localStorage.getItem("userRole"));
-  const [user, setUser] = useState(
-    localStorage.getItem("token") ? { token: localStorage.getItem("token"), id: localStorage.getItem("userId") } : null
-  );
+
   const [error, setError] = useState<null | string>(null);
   const Navigate = useNavigate()
   const auth = useAuth();
@@ -44,7 +42,6 @@ export default function Navbar() {
       // console.log(data, token)
       // const currentUser = data.find((u: any) => u.email === localStorage.getItem("userEmail"));
       if (data) {
-        setUser(data);
         localStorage.setItem("userId", data.id); // تحديث التخزين
       } else {
         setError("اسم المستخدم أو كلمة المرور خطأ");
