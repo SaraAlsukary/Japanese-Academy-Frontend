@@ -38,7 +38,10 @@
 .login-form input{
     height: 55px;
 }
-
+.login-form input:focus {
+  outline: none;
+  border: 2px solid var(--color--green);
+}
 .ForgetPassword {
   margin: auto;
   font-weight: bold;

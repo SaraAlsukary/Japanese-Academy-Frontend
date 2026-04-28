@@ -7,11 +7,14 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoute from "./auth/ProtectedRoute.tsx";
+import { AuthProvider } from './hooks/useAuth.tsx';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ProtectedRoute>
-      <App />
-    </ProtectedRoute>
-    <ToastContainer position="top-center" autoClose={3000} />
+    <AuthProvider>
+      <ProtectedRoute>
+        <App />
+        <ToastContainer position="top-center" autoClose={3000} />
+      </ProtectedRoute>
+    </AuthProvider>
   </StrictMode>,
 )

@@ -13,6 +13,7 @@ import { FaQuestionCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import APIURL from "../../api/constants";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,6 +23,7 @@ export default function Navbar() {
   );
   const [error, setError] = useState<null | string>(null);
   const Navigate = useNavigate()
+  const auth = useAuth();
   const fetchUserData = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -56,9 +58,9 @@ export default function Navbar() {
 
   useEffect(() => {
     fetchUserData();
-    setRole(localStorage.getItem('userRole'))
+  
+    setRole(auth.role)
   }, []);
-
   return (
     <>
       <nav className="navbar navbar-expand-xl navbar-light">
@@ -66,7 +68,7 @@ export default function Navbar() {
           <img src={Logo} alt="" />
         </Link>
         <div className="buttons_mobile">
-          {!user ? (
+          {!auth.user ? (
             <div className="buttons">
               <Link to="/Login_users">
                 <button className="login_nav">
@@ -88,7 +90,7 @@ export default function Navbar() {
                   {/* يمكنك إضافة أيقونة هنا */}
                 </span>
                 {role !== "teacher" && (
-                  <Link to={`/Dash_users/${user.id}`}>
+                    <Link to={`/Dash_users/${auth.user?.id}`}>
                     <button className="register_nav"><span className="button-content">لوحة التحكم</span></button>
                   </Link>
                 )}
@@ -109,7 +111,8 @@ export default function Navbar() {
                       localStorage.removeItem("firstName");
                       localStorage.removeItem("showVideoCall");
                       localStorage.removeItem("uid");
-                      sessionStorage.removeItem("auth");
+                      // sessionStorage.removeItem("auth");
+                      auth.logout()
                       Navigate('/')
                       window.location.reload()
                     }}
@@ -134,7 +137,7 @@ export default function Navbar() {
         <div className={`collapse navbar-collapse ${isOpen ? "show animated-slide" : "animated-hide"}`}
           id="navbarNavDropdown">
           <div className="buttons_pc">
-            {!user ? (
+            {!auth.user ? (
               <div className="buttons">
                 <Link to="/Register_account">
                   <button className="register_nav">
@@ -154,7 +157,7 @@ export default function Navbar() {
                   {/* يمكنك إضافة أيقونة هنا */}
                 </span>
                 {role !== "teacher" && (
-                  <Link to={`/Dash_users/${user.id}`}>
+                  <Link to={`/Dash_users/${auth.user?.id}`}>
                     <button className="register_nav"><span className="button-content">لوحة التحكم</span></button>
                   </Link>
                 )}

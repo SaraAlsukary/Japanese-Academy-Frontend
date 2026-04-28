@@ -7,6 +7,7 @@ import { IoEyeSharp } from "react-icons/io5";
 import LoginImg from '../../assets/Login/snapedit_1739098994814-removebg-preview.png';
 import APIURL from "../../api/constants";
 import { toast } from "react-toastify";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function Login_user() {
   const [email, setEmail] = useState("");
@@ -17,7 +18,7 @@ export default function Login_user() {
   const [error, setError] = useState("");
   const [direction, setDirection] = useState<"rtl" | "ltr">("ltr");
   const [rememberMe, setRememberMe] = useState(false);
-
+  const { login } = useAuth();
   // ✅ عند تحميل الصفحة، تحقق من البيانات المحفوظة في localStorage
 
   const handleSubmit = (e:React.FormEvent) => {
@@ -43,6 +44,9 @@ export default function Login_user() {
         if (data.token) {
           toast.success("تم تسجيل الدخول بنجاح");
           // ✅ حفظ البيانات في localStorage
+          // استدعاء دالة الـ Context (ستقوم بالتخزين وتحديث الـ State معاً)
+   
+          login(data.token, data.user.role, data.user.id);
           localStorage.setItem("token", data.token);
           // localStorage.setItem("firstName", data.user.first_name);
           // localStorage.setItem("userEmail", data.user.email);
