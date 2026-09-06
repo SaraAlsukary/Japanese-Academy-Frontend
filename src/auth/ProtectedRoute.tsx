@@ -1,4 +1,4 @@
-import React, { useState, type ReactNode, } from "react";
+import { useState, type ReactNode } from "react";
 
 type Props = {
     children: ReactNode;
@@ -21,33 +21,34 @@ export default function ProtectedRoute({ children }: Props) {
         }
     };
 
-    // const logout = () => {
-    //     sessionStorage.removeItem("auth");
-    //     setAuth(false);
-    // };
-
     if (!auth) {
         return (
-            <div style={styles.container}>
-                <div style={styles.box}>
-                    <h2 style={{ direction: "ltr" }}> Restricted Area 🔐</h2>
+            <div 
+                dir="ltr" 
+                className="flex h-screen items-center justify-center bg-[#111] text-white"
+            >
+                <div className="flex w-[350px] flex-col gap-2.5 rounded-[10px] bg-[#222] p-[30px]">
+                    <h2 className="text-xl font-bold">Restricted Area 🔐</h2>
 
                     <input
-                        style={styles.input}
+                        className="rounded-[5px] border-none bg-white p-2.5 text-black outline-none"
                         placeholder="Username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                     />
 
                     <input
-                        style={styles.input}
+                        className="rounded-[5px] border-none bg-white p-2.5 text-black outline-none"
                         placeholder="Password"
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
 
-                    <button style={styles.button} onClick={login}>
+                    <button 
+                        className="cursor-pointer rounded-[5px] border-none bg-white p-2.5 text-black font-semibold hover:bg-gray-200 transition-colors" 
+                        onClick={login}
+                    >
                         Login
                     </button>
                 </div>
@@ -55,62 +56,5 @@ export default function ProtectedRoute({ children }: Props) {
         );
     }
 
-    return (
-        <>
-            {children}
-        </>
-    );
+    return <>{children}</>;
 }
-
-const styles: Record<string, React.CSSProperties> = {
-    container: {
-        height: "100vh",
-        direction: "ltr",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        background: "#111",
-        color: "#fff",
-    },
-
-    box: {
-        padding: "30px",
-        borderRadius: "10px",
-        background: "#222",
-        direction: "ltr",
-        display: "flex",
-        flexDirection: "column",
-        gap: "10px",
-        width: "350px",
-    },
-
-    input: {
-        direction: "ltr",
-        padding: "10px",
-        borderRadius: "5px",
-        border: "none",
-        outline: "none",
-    },
-
-    button: {
-        direction: "ltr",
-        padding: "10px",
-        background: "#fff",
-        border: "none",
-        cursor: "pointer",
-        borderRadius: "5px",
-    },
-
-    logout: {
-        direction: "ltr",
-        position: "fixed",
-        top: "10px",
-        right: "10px",
-        padding: "8px 12px",
-        background: "red",
-        color: "white",
-        border: "none",
-        borderRadius: "5px",
-        cursor: "pointer",
-    },
-};
